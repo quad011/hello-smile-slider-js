@@ -9,48 +9,124 @@
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="./animated-element.js"></script>
+    <script src="./scrolling-element.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".animated-section");
+
+        if (sections.length === 0) {
+          console.warn("No animated sections found.");
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const animatedElements =
+                  entry.target.querySelectorAll("animated-element");
+
+                animatedElements.forEach((el) => {
+                  if (typeof el.animateIn === "function") {
+                    el.animateIn();
+                  }
+                });
+
+                observer.unobserve(entry.target); // Only animate once
+              }
+            });
+          },
+          {
+            threshold: 0,
+            rootMargin: "-100% 0px 0px 0px", // Triggers when top of section hits bottom of viewport
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      });
+    </script>
   </head>
   <body>
     <!-- HERO HEADER -->
-    <div class="hero-header">
+    <div class="hero-header animated-section">
       <div class="inner-wrapper">
         <!-- CAPTION -->
-        <p class="caption">TOOTHPASTE</p>
+        <animated-element fromY="50" toY="0" class="caption">
+          <p>TOOTHPASTE</p>
+        </animated-element>
         <!-- END :: CAPTION -->
 
         <!-- TITLE -->
         <h1>
-          <span class="big-title">GUMMY</span>
+          <animated-element fromX="-50" toX="0" delay="0.1">
+            <span class="big-title">GUMMY</span>
+          </animated-element>
 
           <div class="small-title-wrapper">
-            <span v-html="title2" class="small-title">BEAR</span>
+            <animated-element fromX="50" toX="0" delay="0.2">
+              <span v-html="title2" class="small-title">BEAR</span>
+            </animated-element>
           </div>
         </h1>
         <!-- END ::  TITLE -->
 
         <!-- SCORE -->
         <div class="score-wrapper">
-          <div class="score-wrapper-inner">
-            <span class="span1">4.9 / 5</span>
-            * <span class="span2">18,921</span>
-          </div>
+          <animated-element fromY="50" toY="0" delay="0.5">
+            <div class="score-wrapper-inner">
+              <span class="span1">4.9 / 5</span>
+              * <span class="span2">18,921</span>
+            </div>
+          </animated-element>
         </div>
         <!-- END :: SCORE -->
 
         <!-- IMAGES -->
         <div class="image image--0">
-          <img src="/img/1707483665.jpg" :alt="'hello smile'" />
+          <animated-element fromY="50" toY="0" delay="0.3">
+            <scrolling-element
+              fromY="0"
+              toY="10vw"
+              speed="1"
+              startPosition="start"
+              endPosition="bottom"
+            >
+              <img src="/img/1707483665.jpg" :alt="'hello smile'" />
+            </scrolling-element>
+          </animated-element>
         </div>
 
         <div class="image image--1">
-          <img src="/img/1707483666.jpg" :alt="'hello smile'" />
+          <animated-element fromY="-50" toY="0" delay="0.4">
+            <scrolling-element
+              fromY="0"
+              toY="-10vw"
+              speed="1"
+              startPosition="start"
+              endPosition="bottom"
+            >
+              <img src="/img/1707483666.jpg" :alt="'hello smile'" />
+            </scrolling-element>
+          </animated-element>
         </div>
 
         <div class="image image--2">
-          <img src="/img/1707483667.jpg" :alt="'hello smile'" />
-          <p class="image-text">
-            It all started with a simple idea: to build a place where...
-          </p>
+          <animated-element fromY="50" toY="0" delay="0.4">
+            <scrolling-element
+              fromY="0"
+              toY="10vw"
+              speed="1"
+              startPosition="start"
+              endPosition="bottom"
+            >
+              <img src="/img/1707483667.jpg" :alt="'hello smile'" />
+              <p class="image-text">
+                It all started with a simple idea: to build a place where...
+              </p>
+            </scrolling-element>
+          </animated-element>
         </div>
         <!-- END :: IMAGES -->
       </div>
@@ -60,20 +136,24 @@
     </div>
 
     <!-- IMAGE TEXT AND CTA -->
-    <div class="image-text-and-cta">
+    <div class="image-text-and-cta animated-section">
       <div class="content-wrapper-outer">
         <!-- CONTENT -->
         <div class="content-wrapper">
-          <h2 class="title">BUNDLE BUILDER</h2>
+          <animated-element fromY="50" toY="0">
+            <h2 class="title">BUNDLE BUILDER</h2>
+          </animated-element>
 
           <div class="content-wrapper-desk">
-            <p class="text">
-              At Spektre we believe in combining style, functionality, and
-              quality to create sunglasses that not only protect your eyes but
-              also elevate your look. With a passion for timeless designs and
-              innovative craftsmanship, our collection caters to individuals who
-              value comfort, durability, and elegance.
-            </p>
+            <animated-element fromY="50" toY="0" delay="0.1">
+              <p class="text">
+                At Spektre we believe in combining style, functionality, and
+                quality to create sunglasses that not only protect your eyes but
+                also elevate your look. With a passion for timeless designs and
+                innovative craftsmanship, our collection caters to individuals
+                who value comfort, durability, and elegance.
+              </p>
+            </animated-element>
 
             <!-- BTN -->
             <!-- <div class="btn-wrapper">
@@ -99,13 +179,15 @@
       </div>
 
       <div class="content-wrapper-mob">
-        <p class="text">
-          At Spektre we believe in combining style, functionality, and quality
-          to create sunglasses that not only protect your eyes but also elevate
-          your look. With a passion for timeless designs and innovative
-          craftsmanship, our collection caters to individuals who value comfort,
-          durability, and elegance.
-        </p>
+        <animated-element fromY="50" toY="0" delay="0.1">
+          <p class="text">
+            At Spektre we believe in combining style, functionality, and quality
+            to create sunglasses that not only protect your eyes but also
+            elevate your look. With a passion for timeless designs and
+            innovative craftsmanship, our collection caters to individuals who
+            value comfort, durability, and elegance.
+          </p>
+        </animated-element>
 
         <!-- BTN -->
         <!-- <div class="btn-wrapper">
@@ -133,7 +215,7 @@
     </div>
 
     <!-- TEXT AND TWO IMAGES -->
-    <div class="text-and-two-images">
+    <div class="text-and-two-images animated-section">
       <div class="inner-wrapper">
         <!-- TITLE -->
         <h1 class="title">
@@ -144,11 +226,25 @@
 
         <!-- IMAGES -->
         <div class="image image--0">
-          <img src="/img/2.jpg" :alt="'hello smile'" />
+          <scrolling-element
+            fromX="-20vw"
+            toX="0"
+            startPosition="0"
+            endPosition="center center"
+          >
+            <img src="/img/2.jpg" :alt="'hello smile'" />
+          </scrolling-element>
         </div>
 
         <div class="image image--1">
-          <img src="/img/1.jpg" :alt="'hello smile'" />
+          <scrolling-element
+            fromX="20vw"
+            toX="0"
+            startPosition="0"
+            endPosition="center center"
+          >
+            <img src="/img/1.jpg" :alt="'hello smile'" />
+          </scrolling-element>
         </div>
         <!-- END :: IMAGES -->
 
@@ -171,37 +267,102 @@
     </div>
 
     <!-- GALLERY -->
-    <div class="gallery">
+    <div class="gallery animated-section">
       <!-- IMAGES -->
       <div class="image">
-        <img src="/img/GreenApple2.jpg" :alt="'hello smile'" />
+        <animated-element fromY="50" toY="0" class="animated-element">
+          <img src="/img/GreenApple2.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/Cola2.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.1"
+          class="animated-element"
+        >
+          <img src="/img/Cola2.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/Olovka.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.2"
+          class="animated-element"
+        >
+          <img src="/img/Olovka.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/AppleKiwi1.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.3"
+          class="animated-element"
+        >
+          <img src="/img/AppleKiwi1.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/Passion1.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.4"
+          class="animated-element"
+        >
+          <img src="/img/Passion1.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/Pineapple1.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.5"
+          class="animated-element"
+        >
+          <img src="/img/Pineapple1.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/Chocolate1.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.6"
+          class="animated-element"
+        >
+          <img src="/img/Chocolate1.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/LemonTwist.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.7"
+          class="animated-element"
+        >
+          <img src="/img/LemonTwist.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/mix4.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.8"
+          class="animated-element"
+        >
+          <img src="/img/mix4.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <div class="image">
-        <img src="/img/Energy1.jpg" :alt="'hello smile'" />
+        <animated-element
+          fromY="50"
+          toY="0"
+          delay="0.9"
+          class="animated-element"
+        >
+          <img src="/img/Energy1.jpg" :alt="'hello smile'" />
+        </animated-element>
       </div>
       <!-- END :: IMAGES -->
     </div>

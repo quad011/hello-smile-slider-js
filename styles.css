@@ -34,6 +34,12 @@ img {
   height: 100%;
 }
 
+.animated-element {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
 /* HERO */
 .hero-header {
   display: flex;
@@ -54,7 +60,8 @@ img {
   z-index: 10;
 }
 .hero-header .inner-wrapper .caption {
-  text-align: right;
+  display: flex;
+  justify-content: end;
   font-size: 0.36rem;
   font-family: "Helvetica";
   @media (min-width: 992px) {
@@ -166,7 +173,7 @@ img {
   width: 29vw;
   height: 26vw;
   @media (min-width: 600px) {
-    top: 24vw;
+    top: 20vw;
   }
 }
 .hero-header .inner-wrapper .image--1 {
@@ -175,12 +182,12 @@ img {
   width: 19.16vw;
   height: 19vw;
   @media (min-width: 600px) {
-    top: 20vw;
+    top: 26vw;
   }
 }
 .hero-header .inner-wrapper .image--2 {
   right: 0%;
-  top: 18vw;
+  top: 11vw;
   width: 17.7vw;
   height: 28vw;
   @media (min-width: 600px) {
@@ -611,7 +618,7 @@ img {
   color: #282930;
   font-family: "Impact";
   margin: 0;
-  font-wight: 100;
+  font-weight: 100;
 }
 .text-and-two-images .inner-wrapper .title span {
   position: relative;
