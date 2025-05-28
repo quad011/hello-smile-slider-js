@@ -11,6 +11,113 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- HERO HEADER -->
+    <div class="hero-header">
+      <div class="inner-wrapper">
+        <!-- CAPTION -->
+        <p class="caption">TOOTHPASTE</p>
+        <!-- END :: CAPTION -->
+
+        <!-- TITLE -->
+        <h1>
+          <span class="big-title">GUMMY</span>
+
+          <div class="small-title-wrapper">
+            <span v-html="title2" class="small-title">BEAR</span>
+          </div>
+        </h1>
+        <!-- END ::  TITLE -->
+
+        <!-- SCORE -->
+        <div class="score-wrapper">
+          <div class="score-wrapper-inner">
+            <span class="span1">4.9 / 5</span>
+            * <span class="span2">18,921</span>
+          </div>
+        </div>
+        <!-- END :: SCORE -->
+
+        <!-- IMAGES -->
+        <div class="image image--0">
+          <img src="/img/1707483665.jpg" :alt="'hello smile'" />
+        </div>
+
+        <div class="image image--1">
+          <img src="/img/1707483666.jpg" :alt="'hello smile'" />
+        </div>
+
+        <div class="image image--2">
+          <img src="/img/1707483667.jpg" :alt="'hello smile'" />
+          <p class="image-text">
+            It all started with a simple idea: to build a place where...
+          </p>
+        </div>
+        <!-- END :: IMAGES -->
+      </div>
+      <div class="gradient-wrapper">
+        <img src="img/background-gradient.png" :alt="'hello smile'" />
+      </div>
+    </div>
+
+    <!-- IMAGE TEXT AND CTA -->
+    <div class="image-text-and-cta">
+      <div class="content-wrapper-outer">
+        <!-- CONTENT -->
+        <div class="content-wrapper">
+          <h2 class="title">BUNDLE BUILDER</h2>
+
+          <div class="content-wrapper-desk">
+            <p class="text">
+              At Spektre we believe in combining style, functionality, and
+              quality to create sunglasses that not only protect your eyes but
+              also elevate your look. With a passion for timeless designs and
+              innovative craftsmanship, our collection caters to individuals who
+              value comfort, durability, and elegance.
+            </p>
+
+            <!-- BTN -->
+            <!-- <div class="btn-wrapper">
+                <RouterLink to="/">
+                  <btnComponent
+                    theme="black"
+                    textBtn="Dodaj u Korpu"
+                    class="btn"
+                  />
+                </RouterLink>
+              </animated-element>
+            </div> -->
+            <!-- END :: BTN -->
+          </div>
+        </div>
+        <!-- END :: CONTENT -->
+
+        <!-- IMAGE -->
+        <div class="bg-image">
+          <img src="/img/8.jpg" :alt="'hello smile'" />
+        </div>
+        <!-- END :: IMAGE -->
+      </div>
+
+      <div class="content-wrapper-mob">
+        <p class="text">
+          At Spektre we believe in combining style, functionality, and quality
+          to create sunglasses that not only protect your eyes but also elevate
+          your look. With a passion for timeless designs and innovative
+          craftsmanship, our collection caters to individuals who value comfort,
+          durability, and elegance.
+        </p>
+
+        <!-- BTN -->
+        <!-- <div class="btn-wrapper">
+          <RouterLink to="/">
+            <btnComponent theme="pink" textBtn="Dodaj u Korpu" class="btn" />
+          </RouterLink>
+        </div> -->
+        <!-- END :: BTN -->
+      </div>
+    </div>
+
+    <!-- SLIDER COMPONENT -->
     <div class="slider-component">
       <!-- Background Waves -->
       <div class="clip-wrapper">
@@ -23,6 +130,80 @@
           <div id="swiper-wrapper" class="swiper-wrapper"></div>
         </div>
       </div>
+    </div>
+
+    <!-- TEXT AND TWO IMAGES -->
+    <div class="text-and-two-images">
+      <div class="inner-wrapper">
+        <!-- TITLE -->
+        <h1 class="title">
+          <span>ABOUT U</span>
+          <span class="last-letter">S</span>
+        </h1>
+        <!-- END ::  TITLE -->
+
+        <!-- IMAGES -->
+        <div class="image image--0">
+          <img src="/img/2.jpg" :alt="'hello smile'" />
+        </div>
+
+        <div class="image image--1">
+          <img src="/img/1.jpg" :alt="'hello smile'" />
+        </div>
+        <!-- END :: IMAGES -->
+
+        <!-- TEXT -->
+        <p class="text">
+          At Spektre we believe in combining style, functionality, and quality
+          to create sunglasses that not only protect your eyes but also elevate
+          your look. With a passion for timeless designs and innovative
+          craftsmanship, our collection caters to individuals who value comfort,
+          durability, and elegance.
+        </p>
+        <!-- END ::  TEXT -->
+
+        <!-- BTN -->
+        <!-- <animated-element :fromY="50" :toY="0" :delay="0.2" class="btn-wrapper">
+          <arrow-btn :textBtn="textBtn" />
+        </animated-element> -->
+        <!-- END ::  BTN -->
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery">
+      <!-- IMAGES -->
+      <div class="image">
+        <img src="/img/GreenApple2.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/Cola2.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/Olovka.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/AppleKiwi1.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/Passion1.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/Pineapple1.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/Chocolate1.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/LemonTwist.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/mix4.jpg" :alt="'hello smile'" />
+      </div>
+      <div class="image">
+        <img src="/img/Energy1.jpg" :alt="'hello smile'" />
+      </div>
+      <!-- END :: IMAGES -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
